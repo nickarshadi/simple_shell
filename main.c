@@ -42,7 +42,7 @@ int main(void)
 			if (child_pid == 0)
 			{
 				if (execve(argv[0], argv, NULL) == -1)
-					perror("Error: ");
+					perror("./hsh");
 				return (0);
 			}
 			wait(&status);
