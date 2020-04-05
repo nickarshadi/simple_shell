@@ -7,14 +7,14 @@
  * Return: 1 on succes, -1 on failure
  */
 
-char* checkpath(list_t **head, char *command)
+char *checkpath(list_t **head, char *command)
 {
 	struct stat st;
 	char *lcommand = "/bin/ls";
 	list_t *node;
 
 	node = *head;
-	while(node)
+	while (node)
 	{
 		lcommand = node->str;
 		strcat(lcommand, "/");
@@ -25,7 +25,5 @@ char* checkpath(list_t **head, char *command)
 		}
 		node = node->next;
 	}
-	(void)head;
-	(void)command;
 	return (command);
 }
