@@ -3,25 +3,27 @@
 /**
  * process_line - process getline
  */
-int process_line(char *line, char *argv[2], pid_t child_pid, int len, int status, int i , char **environ)
+int p_l(char *line, char *argv[2], char **env)
 {
 	int j = 1;
+	int len = 0, status = 0, i = 0;
+	pid_t child_pid = 0;
 
 	argv[1] = NULL;
 	argv[2] = NULL;
 	argv[3] = NULL;
-	if (strcmp(line, "exit\n") == 0)
+	if (!strcmp(line, "exit\n"))
 		{
 			free(line);
 			return (-1);
 		}
 		len = strlen(line);
 		line[len - 1] = '\0';
-		if (strcmp(line, "env") == 0)
+		if (!strcmp(line, "env"))
 		{
-			while (environ[i + 1])
+			while (env[i + 1])
 			{
-				printf("%s\n", environ[i]);
+				printf("%s\n", env[i]);
 				i++;
 			}
 		} else

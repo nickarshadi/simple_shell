@@ -1,18 +1,20 @@
 #include "shell.h"
 
 /**
- * main - get environmental variable
+ * _getenv - get environmental variable
+ * @name: name you search
+ * @env: environmental variables
+ * Return: return value of env-variablename
  */
-char *_getenv(const char *name)
+char *_getenv(const char *name, char **env)
 {
-	extern char **environ;
 	int i = 0;
 	char *token2;
 	char *token3;
 
-	while (environ[i])
+	while (env[i])
 	{
-		token2 = strtok(environ[i], "=");
+		token2 = strtok(env[i], "=");
 		token3 = strtok(NULL, "=");
 		if (strcmp(name, token2) == 0)
 			return (token3);

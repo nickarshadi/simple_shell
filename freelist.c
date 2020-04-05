@@ -7,7 +7,7 @@ void free_list(list_t *head)
 {
 	list_t *node, *node1;
 
-	if(!head)
+	if (!head)
 		return;
 	node = head;
 	while (node)

@@ -3,7 +3,8 @@
 /**
  * add_node_end - add node at end of linked list
  * @head: head
- * @
+ * @str: string value
+ * Return: list_t
  */
 list_t *add_node_end(list_t **head, const char *str)
 {

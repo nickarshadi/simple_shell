@@ -24,12 +24,12 @@ typedef struct list_s
     struct list_s *next;
 } list_t;
 
-char *_getenv(const char *name);
-int printpath(void);
-list_t *listpath(list_t **head);
+char *_getenv(const char *name, char **env);
+int printpath(char **env);
+list_t *listpath(list_t **head, char **env);
 list_t *add_node_end(list_t **head, const char *str);
 void free_list(list_t *head);
 size_t print_list(const list_t *h);
-int process_line(char *line, char *argv[2], pid_t child_pid, int len, int status, int i , char **environ);
+int p_l(char *line, char *argv[2], char **environ);
 
 #endif
