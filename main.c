@@ -10,7 +10,8 @@ int main(void)
 	size_t n = 0;
 	pid_t child_pid;
 	ssize_t nread;
-	int len = 0, status;
+	int len = 0, status, i = 0;
+	extern char **environ;
 
 	while (1)
 	{
@@ -25,6 +26,16 @@ int main(void)
 			}
 			len = strlen(line);
 			line[len - 1] = '\0';
+			if (strcmp(line, "env") == 0)
+			{
+				while (environ[i + 1])
+				{
+					printf("%s\n", environ[i]);
+					i++;
+				}
+			}
+			else
+			{
 			argv[0] = line;
 			argv[1] = NULL;
 			child_pid = fork();
@@ -35,6 +46,7 @@ int main(void)
 				return (0);
 			}
 			wait(&status);
+			}
 		}
 		free(line);
 		line = NULL;
