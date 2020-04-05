@@ -1,9 +1,13 @@
 #include "shell.h"
 
 /**
- * process_line - process getline
+ * p_l - process line which is received by getline
+ * @line: received line
+ * @argv: arguments
+ * @env: environment variable
+ * Return: 0 on succes, -1 if fails
  */
-int p_l(char *line, char *argv[2], char **env)
+int p_l(char *line, char *argv[4], char **env)
 {
 	int j = 1;
 	int len = 0, status = 0, i = 0;

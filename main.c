@@ -1,7 +1,9 @@
 #include "shell.h"
 /**
  * main - shell
- * @av:
+ * @ac: number of arguments
+ * @av: Null terminated array of strings/arguments
+ * @env: NULL terminated array of environment variables
  * Return: 0 on success, 1 on error
  */
 int main(int ac, char **av, char **env)
