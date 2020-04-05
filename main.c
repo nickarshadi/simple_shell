@@ -6,11 +6,11 @@
  */
 int main(void)
 {
-	char *line = NULL, *argv[2];
+	char *line = NULL, *argv[2] = {"", ""};
 	size_t n = 0;
-	pid_t child_pid;
-	ssize_t nread;
-	int len = 0, status, i = 0;
+	pid_t child_pid = 0;
+	ssize_t nread = 0;
+	int len = 0, status = 0, i = 0;
 	extern char **environ;
 
 	while (1)
@@ -19,34 +19,7 @@ int main(void)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
-			if (strcmp(line, "exit\n") == 0)
-			{
-				free(line);
-				return (0);
-			}
-			len = strlen(line);
-			line[len - 1] = '\0';
-			if (strcmp(line, "env") == 0)
-			{
-				while (environ[i + 1])
-				{
-					printf("%s\n", environ[i]);
-					i++;
-				}
-			}
-			else
-			{
-			argv[0] = line;
-			argv[1] = NULL;
-			child_pid = fork();
-			if (child_pid == 0)
-			{
-				if (execve(argv[0], argv, NULL) == -1)
-					perror("./hsh");
-				return (0);
-			}
-			wait(&status);
-			}
+			process_line(line, argv, child_pid, len, status, i, environ);
 		}
 		free(line);
 		line = NULL;

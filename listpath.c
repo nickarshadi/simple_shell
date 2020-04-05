@@ -16,3 +16,16 @@ list_t *listpath(list_t **head)
 	}
 	return (*head);
 }
+/*
+int main(void)
+{
+	list_t *head;
+
+	head = NULL;
+	listpath(&head);
+	print_list(head);
+	free_list(head);
+	return (0);
+}
+
+*/
