@@ -17,34 +17,34 @@ int p_l(char *line, char *argv[4], char **env)
 	argv[2] = NULL;
 	argv[3] = NULL;
 	if (!strcmp(line, "exit\n"))
+	{
+		free(line);
+		return (-1);
+	}
+	len = strlen(line);
+	line[len - 1] = '\0';
+	if (!strcmp(line, "env"))
+	{
+		while (env[i + 1])
 		{
-			free(line);
-			return (-1);
+			printf("%s\n", env[i]);
+			i++;
 		}
-		len = strlen(line);
-		line[len - 1] = '\0';
-		if (!strcmp(line, "env"))
+	} else
+	{
+		argv[0] = strtok(line, " ");
+		while ((argv[j] = strtok(NULL, "")))
+			j++;
+		child_pid = fork();
+		if (child_pid == 0)
 		{
-			while (env[i + 1])
+			if (execve(argv[0], argv, NULL) == -1)
 			{
-				printf("%s\n", env[i]);
-				i++;
+				perror("./hsh");
 			}
-		} else
-		{
-			argv[0] = strtok(line, " ");
-			while ((argv[j] = strtok(NULL, "")))
-				j++;
-			child_pid = fork();
-			if (child_pid == 0)
-			{
-				if (execve(argv[0], argv, NULL) == -1)
-					{
-						perror("./hsh");
-					}
-				return (0);
-			}
-			wait(&status);
+			return (0);
 		}
-		return (0);
+		wait(&status);
+	}
+	return (0);
 }
