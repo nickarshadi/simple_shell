@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	char *line = NULL, *argv[2] = {"", ""};
+	char *line = NULL, *argv[4] = {"", "", "", ""};
 	size_t n = 0;
 	pid_t child_pid = 0;
 	ssize_t nread = 0;
@@ -19,7 +19,8 @@ int main(void)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
-			process_line(line, argv, child_pid, len, status, i, environ);
+			if (process_line(line, argv, child_pid, len, status, i, environ) == -1)
+				return(1);
 		}
 		free(line);
 		line = NULL;

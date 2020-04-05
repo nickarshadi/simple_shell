@@ -1,7 +1,9 @@
 #include "shell.h"
 
 /**
- *
+ * add_node_end - add node at end of linked list
+ * @head: head
+ * @
  */
 list_t *add_node_end(list_t **head, const char *str)
 {
