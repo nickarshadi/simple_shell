@@ -13,7 +13,6 @@ int main(int ac, char **av, char **env)
 	ssize_t nread = 0;
 	list_t *head;
 
-	head = NULL;
 	listpath(&head, env);
 	while (1)
 	{
@@ -26,6 +25,7 @@ int main(int ac, char **av, char **env)
 				free_list(head);
 				return (0);
 			}
+
 		}
 		free(line);
 		line = NULL;
@@ -33,5 +33,5 @@ int main(int ac, char **av, char **env)
 	}
 	(void)ac;
 	(void)av;
-	(void)env;
+	return (0);
 }

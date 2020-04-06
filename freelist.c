@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * free_list - free a leist from heap
+ * free_list - free a list from heap
  * @head: head
  */
 void free_list(list_t *head)

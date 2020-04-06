@@ -20,6 +20,7 @@ int p_l(char *line, char *argv[4], char **env, list_t **head)
 	if (!strcmp(line, "exit\n"))
 	{
 		free(line);
+		line = NULL;
 		return (-1);
 	}
 	len = strlen(line);
@@ -34,7 +35,7 @@ int p_l(char *line, char *argv[4], char **env, list_t **head)
 	} else
 	{
 		argv[0] = strtok(line, " ");
-		argv[0] = checkpath(head, argv[0]);
+		argv[0] = checkpath(*head, argv[0]);
 		while ((argv[j] = strtok(NULL, "")))
 			j++;
 		child_pid = fork();
