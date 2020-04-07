@@ -10,9 +10,9 @@
 int p_l(char *line, char **env, list_t **head)
 {
 	char *command[4] = {"", "", "", ""};
-	int len = 0, status = 0, i = 0, j = 1;
+	int len = 0, status, i = 0, j = 1;
 	pid_t child_pid = 0;
-	char buffer[500];
+	char buffer[100];
 	char *lcommand = &buffer[0];
 
 	command[1] = NULL;
@@ -37,15 +37,22 @@ int p_l(char *line, char **env, list_t **head)
 		while ((command[j] = strtok(NULL, "")))
 			j++;
 		child_pid = fork();
+		if (child_pid == -1)
+		{
+			perror("./hsh");
+			return (1);
+		}
 		if (child_pid == 0)
 		{
+			dprintf(1,"child\n");
 			if (execve(command[0], command, NULL) == -1)
-			{
 				perror("./hsh");
-			}
-			return (0);
+			return (-1);
+		} else
+		{
+			wait(&status);
+			printf("father\n");
 		}
-		wait(&status);
 	}
 	return (0);
 }

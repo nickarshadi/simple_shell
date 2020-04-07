@@ -28,7 +28,6 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 		strcat(lcommand, command);
 		if (!stat(lcommand, &st))
 		{
-			printf("%s\n", lcommand);
 			return (lcommand);
 		}
 		node = node->next;
