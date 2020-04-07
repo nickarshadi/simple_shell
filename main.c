@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
 				free_list(head);
 				return (0);
 			}
-		} else if(nread == EOF)
+		} else if (nread == EOF)
 		{
 			free_list(head);
 			free(line);
