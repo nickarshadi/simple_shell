@@ -12,7 +12,7 @@ int p_l(char *line, char **env, list_t **head)
 	char *command[4] = {"", "", "", ""};
 	int len = 0, status = 0, i = 0, j = 1;
 	pid_t child_pid = 0;
-	char buffer[100];
+	char buffer[500];
 	char *lcommand = &buffer[0];
 
 	command[1] = NULL;
