@@ -6,20 +6,19 @@
  * @str: string value
  * Return: list_t
  */
-list_t *add_node_end(list_t **head, const char *str)
+list_t *add_node_end(list_t **head, char *str)
 {
-	list_t *new = malloc(sizeof(list_t));
+	list_t *new_node = malloc(sizeof(list_t));
 	list_t *node = *head;
 
-	if (!head || !new)
+	if (!head || !new_node)
 		return (NULL);
 	if (str)
 	{
-		new->str = strdup(str);
-		new->next = NULL;
-		if (!new->str)
+		new_node->str = strdup(str);
+		if (!new_node->str)
 		{
-			free(new);
+			free(new_node);
 			return (NULL);
 		}
 	}
@@ -27,8 +26,9 @@ list_t *add_node_end(list_t **head, const char *str)
 	{
 		while (node->next)
 			node = node->next;
-		node->next = new;
-	} else
-	*head = new;
-	return (new);
+		node->next = new_node;
+	}
+	else
+		*head = new_node;
+	return (new_node);
 }

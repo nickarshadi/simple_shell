@@ -27,10 +27,10 @@ typedef struct list_s
 char *_getenv(const char *name, char **env);
 int printpath(char **env);
 list_t *listpath(list_t **head, char **env);
-list_t *add_node_end(list_t **head, const char *str);
+list_t *add_node_end(list_t **head, char *str);
 void free_list(list_t *head);
 size_t print_list(const list_t *h);
-int p_l(char *line, char *argv[4], char **env, list_t **head);
-char *checkpath(const list_t *head, char *command);
+int p_l(char *line, char **env, list_t **head);
+char *checkpath(const list_t *head, char *command, char *lcommand);
 
 #endif

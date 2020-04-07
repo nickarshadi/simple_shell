@@ -8,10 +8,10 @@
  */
 int main(int ac, char **av, char **env)
 {
-	char *line = NULL, *argv[4] = {"", "", "", ""};
+	char *line = NULL;
 	size_t n = 0;
 	ssize_t nread = 0;
-	list_t *head;
+	list_t *head = NULL;
 
 	listpath(&head, env);
 	while (1)
@@ -20,7 +20,7 @@ int main(int ac, char **av, char **env)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
-			if (p_l(line, argv, env, &head) == -1)
+			if (p_l(line, env, &head) == -1)
 			{
 				free_list(head);
 				return (0);

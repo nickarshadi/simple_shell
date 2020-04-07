@@ -8,15 +8,20 @@
  * @head: head of file
  * Return: 0 on succes, -1 if fails
  */
-int p_l(char *line, char *argv[4], char **env, list_t **head)
+int p_l(char *line, char **env, list_t **head)
 {
 	int j = 1;
+	char *command[4] = {"", "", "", ""};
 	int len = 0, status = 0, i = 0;
 	pid_t child_pid = 0;
+	char buffer[100];
+	char *lcommand = &buffer[0];
 
-	argv[1] = NULL;
-	argv[2] = NULL;
-	argv[3] = NULL;
+	(void)head;
+
+	command[1] = NULL;
+	command[2] = NULL;
+	command[3] = NULL;
 	if (!strcmp(line, "exit\n"))
 	{
 		free(line);
@@ -34,14 +39,14 @@ int p_l(char *line, char *argv[4], char **env, list_t **head)
 		}
 	} else
 	{
-		argv[0] = strtok(line, " ");
-		argv[0] = checkpath(*head, argv[0]);
-		while ((argv[j] = strtok(NULL, "")))
+		command[0] = strtok(line, " ");
+		command[0] = checkpath(*head, command[0], lcommand);
+		while ((command[j] = strtok(NULL, "")))
 			j++;
 		child_pid = fork();
 		if (child_pid == 0)
 		{
-			if (execve(argv[0], argv, NULL) == -1)
+			if (execve(command[0], command, NULL) == -1)
 			{
 				perror("./hsh");
 			}
@@ -49,5 +54,9 @@ int p_l(char *line, char *argv[4], char **env, list_t **head)
 		}
 		wait(&status);
 	}
+
+	(void)line;
+	(void)env;
+	(void)head;
 	return (0);
 }

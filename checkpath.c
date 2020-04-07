@@ -7,11 +7,9 @@
  * Return: 1 on succes, -1 on failure
  */
 
-char *checkpath(const list_t *head, char *command)
+char *checkpath(const list_t *head, char *command, char *lcommand)
 {
 	struct stat st;
-	char buffer[100];
-	char *lcommand = &buffer[0];
 	const list_t *node = head;
 	int i;
 
