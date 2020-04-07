@@ -22,6 +22,8 @@ int main(int ac, char **av, char **env)
 		{
 			if (p_l(line, env, &head) == -1)
 			{
+				free(line);
+				line = NULL;
 				free_list(head);
 				return (0);
 			}

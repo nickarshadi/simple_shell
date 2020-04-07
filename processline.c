@@ -20,8 +20,6 @@ int p_l(char *line, char **env, list_t **head)
 	command[3] = NULL;
 	if (!strcmp(line, "exit\n"))
 	{
-		free(line);
-		line = NULL;
 		return (-1);
 	}
 	len = strlen(line);
@@ -39,19 +37,16 @@ int p_l(char *line, char **env, list_t **head)
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			perror("./hsh");
-			return (1);
+			return (-1);
 		}
-		if (child_pid == 0)
+		else if (child_pid == 0)
 		{
-			dprintf(1,"child\n");
 			if (execve(command[0], command, NULL) == -1)
 				perror("./hsh");
 			return (-1);
 		} else
 		{
 			wait(&status);
-			printf("father\n");
 		}
 	}
 	return (0);
