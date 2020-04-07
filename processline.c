@@ -3,21 +3,17 @@
 /**
  * p_l - process line which is received by getline
  * @line: received line
- * @argv: arguments
  * @env: environment variable
  * @head: head of file
  * Return: 0 on succes, -1 if fails
  */
 int p_l(char *line, char **env, list_t **head)
 {
-	int j = 1;
 	char *command[4] = {"", "", "", ""};
-	int len = 0, status = 0, i = 0;
+	int len = 0, status = 0, i = 0, j = 1;
 	pid_t child_pid = 0;
 	char buffer[100];
 	char *lcommand = &buffer[0];
-
-	(void)head;
 
 	command[1] = NULL;
 	command[2] = NULL;
@@ -32,11 +28,8 @@ int p_l(char *line, char **env, list_t **head)
 	line[len - 1] = '\0';
 	if (!strcmp(line, "env"))
 	{
-		while (env[i + 1])
-		{
+		for (; env[i + 1]; i++)
 			printf("%s\n", env[i]);
-			i++;
-		}
 	} else
 	{
 		command[0] = strtok(line, " ");
@@ -54,9 +47,5 @@ int p_l(char *line, char **env, list_t **head)
 		}
 		wait(&status);
 	}
-
-	(void)line;
-	(void)env;
-	(void)head;
 	return (0);
 }

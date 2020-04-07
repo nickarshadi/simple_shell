@@ -4,6 +4,7 @@
  * checkpath - check path
  * @head: head of pathlist
  * @command: command
+ * @lcommand: buffer to store command plus path in
  * Return: 1 on succes, -1 on failure
  */
 
@@ -11,7 +12,7 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 {
 	struct stat st;
 	const list_t *node = head;
-	int i;
+	int i, len = strlen(lcommand);
 
 	while (node)
 	{
@@ -19,7 +20,7 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 		{
 			lcommand[i] = (node->str)[i];
 		}
-		for (; i < 100; i++)
+		for (; i < len; i++)
 		{
 			lcommand[i] = '\0';
 		}
