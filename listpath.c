@@ -17,14 +17,14 @@
  */
 list_t *listpath(list_t **head, char **env)
 {
-	char *path = _getenv("PATH", env), *buf;
+	char *path = _getenv("PATH", env), *token;
 
-	buf = strtok(path, ":");
-	add_node_end(head, buf);
+	token = strtok(path, ":");
+	add_node_end(head, token);
 
-	while ((buf = strtok(NULL, ":")) != NULL)
+	while ((token = strtok(NULL, ":")) != NULL)
 	{
-		add_node_end(head, buf);
+		add_node_end(head, token);
 	}
 	return (*head);
 }

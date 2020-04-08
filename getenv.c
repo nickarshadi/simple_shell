@@ -9,15 +9,15 @@
 char *_getenv(const char *name, char **env)
 {
 	int i = 0;
-	char *token2;
-	char *token3;
+	char *token;
+	char *token1;
 
 	while (env[i])
 	{
-		token2 = strtok(env[i], "=");
-		token3 = strtok(NULL, "=");
-		if (strcmp(name, token2) == 0)
-			return (token3);
+		token = strtok(env[i], "=");
+		token1 = strtok(NULL, "=");
+		if (strcmp(name, token) == 0)
+			return (token1);
 		i++;
 	}
 	return (NULL);
