@@ -31,7 +31,7 @@ int main(int ac, char **av, char **env)
 		{
 			free_list(head);
 			free(line);
-			putchar('\n');
+			_putchar('\n');
 			return (0);
 		}
 		free(line);

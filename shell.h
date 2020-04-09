@@ -32,5 +32,8 @@ void free_list(list_t *head);
 size_t print_list(const list_t *h);
 int p_l(char *line, char **env, list_t **head);
 char *checkpath(const list_t *head, char *command, char *lcommand);
+int _putchar(char c);
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
 
 #endif

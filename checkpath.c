@@ -12,7 +12,7 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 {
 	struct stat st;
 	const list_t *node = head;
-	int i, len = strlen(lcommand);
+	int i, len = _strlen(lcommand);
 
 	while (node)
 	{

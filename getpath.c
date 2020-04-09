@@ -7,14 +7,14 @@
  */
 int printpath(char **env)
 {
-	char *path, *buf;
+	char *path, *node;
 
 	path = _getenv("PATH", env);
-	buf = strtok(path, ":");
-	printf("%s", buf);
-	while ((buf = strtok(NULL, ":")) != NULL)
+	node = strtok(path, ":");
+	printf("%s", node);
+	while ((node = strtok(NULL, ":")) != NULL)
 	{
-		printf("%s\n", buf);
+		printf("%s\n", node);
 	}
 	return (0);
 }

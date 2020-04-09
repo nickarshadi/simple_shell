@@ -18,13 +18,13 @@ int p_l(char *line, char **env, list_t **head)
 	command[1] = NULL;
 	command[2] = NULL;
 	command[3] = NULL;
-	if (!strcmp(line, "exit\n"))
+	if (!_strcmp(line, "exit\n"))
 	{
 		return (-1);
 	}
-	len = strlen(line);
+	len = _strlen(line);
 	line[len - 1] = '\0';
-	if (!strcmp(line, "env"))
+	if (!_strcmp(line, "env"))
 	{
 		for (; env[i + 1]; i++)
 			printf("%s\n", env[i]);
