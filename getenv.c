@@ -6,7 +6,7 @@
  * @env: environmental variables
  * Return: return value of env-variablename
  */
-char *_getenv(const char *name, char **env)
+char *_getenv(char *name, char **env)
 {
 	int i = 0;
 	char *token;
@@ -16,7 +16,7 @@ char *_getenv(const char *name, char **env)
 	{
 		token = strtok(env[i], "=");
 		token1 = strtok(NULL, "=");
-		if (strcmp(name, token) == 0)
+		if (_strcmp(name, token) == 0)
 			return (token1);
 		i++;
 	}

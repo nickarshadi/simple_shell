@@ -24,7 +24,7 @@ typedef struct list_s
     struct list_s *next;
 } list_t;
 
-char *_getenv(const char *name, char **env);
+char *_getenv(char *name, char **env);
 int printpath(char **env);
 list_t *listpath(list_t **head, char **env);
 list_t *add_node_end(list_t **head, char *str);
@@ -35,5 +35,6 @@ char *checkpath(const list_t *head, char *command, char *lcommand);
 int _putchar(char c);
 int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
 
 #endif

@@ -24,8 +24,8 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 		{
 			lcommand[i] = '\0';
 		}
-		strcat(lcommand, "/");
-		strcat(lcommand, command);
+		_strcat(lcommand, "/");
+		_strcat(lcommand, command);
 		if (!stat(lcommand, &st))
 		{
 			return (lcommand);
