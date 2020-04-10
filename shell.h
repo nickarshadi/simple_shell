@@ -12,10 +12,11 @@
 #include <unistd.h>
 
 /**
- * struct op - Struct op
+ * struct list_s - Struct for a singly linked list to save arguments passed to
+ * the commands
  *
- * @op: The operator
- * @f: The function associated
+ * @str: Argument
+ * @next: Address of the next node in the list
  */
 typedef struct list_s
 {
