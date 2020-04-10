@@ -22,6 +22,8 @@ int p_l(char *line, char **env, list_t **head)
 	{
 		return (-1);
 	}
+	if (!_strcmp(line, "\n"))
+		return (0);
 	len = _strlen(line);
 	line[len - 1] = '\0';
 	if (!_strcmp(line, "env"))
