@@ -36,18 +36,14 @@ int p_l(char *line, char **env, list_t **head)
 			j++;
 		child_pid = fork();
 		if (child_pid == -1)
-		{
 			return (-1);
-		}
 		else if (child_pid == 0)
 		{
 			if (execve(command[0], command, NULL) == -1)
 				perror("./hsh");
 			return (-1);
-		} else
-		{
-			wait(&status);
 		}
+			wait(&status);
 	}
 	return (0);
 }
