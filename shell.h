@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -20,8 +19,8 @@
  */
 typedef struct list_s
 {
-    char *str;
-    struct list_s *next;
+	char *str;
+	struct list_s *next;
 } list_t;
 
 char *_getenv(char *name, char **env);
