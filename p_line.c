@@ -7,7 +7,7 @@
  * @head: head of file
  * Return: 0 on succes, -1 if fails
  */
-int p_l(char *line, char **env, list_t **head)
+int p_l(char *line, char **env, list_t **head, char **av)
 {
 	char *command[4] = {"", "", "", ""};
 	int len = 0, status, i = 0, j = 1;
@@ -42,7 +42,7 @@ int p_l(char *line, char **env, list_t **head)
 		else if (child_pid == 0)
 		{
 			if (execve(command[0], command, NULL) == -1)
-				perror("./hsh");
+				perror(av[0]);
 			return (-1);
 		}
 			wait(&status);

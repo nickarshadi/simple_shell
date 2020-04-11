@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
-			if (p_l(line, env, &head) == -1)
+			if (p_l(line, env, &head, av) == -1)
 			{
 				free(line);
 				line = NULL;
@@ -47,5 +47,4 @@ int main(int ac, char **av, char **env)
 			return (0);
 	}
 	(void)ac;
-	(void)av;
 }
