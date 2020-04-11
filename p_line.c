@@ -34,7 +34,6 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		line[len - 1] = '\0';
 		command[0] = strtok(line, " ");
 		command[0] = checkpath(*head, command[0], lcommand);
-		printf("%s\n", command[0]);
 		while ((command[j] = strtok(NULL, " ")))
 			j++;
 		child_pid = fork();
