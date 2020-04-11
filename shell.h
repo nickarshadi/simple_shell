@@ -37,5 +37,6 @@ int _strcmp(char *s1, char *s2);
 char *_strcat(char *dest, char *src);
 char *_strdup(const char *s);
 char *_memcpy(char *dest, const char *src, unsigned int n);
+char *remove_space(char *s);
 
 #endif /* SHELL_H */

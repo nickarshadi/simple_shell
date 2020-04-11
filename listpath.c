@@ -17,8 +17,9 @@
  */
 list_t *listpath(list_t **head, char **env)
 {
-	char *path = _getenv("PATH", env), *token;
+	char *path = NULL, *token = NULL;
 
+	path = _getenv("PATH", env);
 	token = strtok(path, ":");
 	add_node_end(head, token);
 

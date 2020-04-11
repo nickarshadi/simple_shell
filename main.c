@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
 	size_t n = 0;
 	ssize_t nread = 0;
 	list_t *head = NULL;
-	int printed, interactive = isatty(STDIN_FILENO);
+	int printed = 0, interactive = isatty(STDIN_FILENO);
 
 	listpath(&head, env);
 	while (1)

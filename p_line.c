@@ -9,32 +9,32 @@
  */
 int p_l(char *line, char **env, list_t **head, char **av)
 {
-	char *command[4] = {"", "", "", ""};
+	char *command[4] = {"", "", "", ""}, buffer[1024];
 	int len = 0, status, i = 0, j = 1;
 	pid_t child_pid = 0;
-	char buffer[100];
 	char *lcommand = &buffer[0];
 
-	command[1] = NULL;
-	command[2] = NULL;
-	command[3] = NULL;
+	for (; i < 1024; i++)
+		buffer[i] =  '0';
+	for (i = 1; i < 4; i++)
+		command[i] = NULL;
+	i = 0;
 	if (!_strcmp(line, "exit\n"))
-	{
 		return (-1);
-	}
 	if (!_strcmp(line, "\n"))
 		return (0);
-	len = _strlen(line);
-	line[len - 1] = '\0';
-	if (!_strcmp(line, "env"))
+	if (!_strcmp(line, "env\n"))
 	{
 		for (; env[i + 1]; i++)
 			printf("%s\n", env[i]);
 	} else
 	{
+		len = _strlen(line);
+		line[len - 1] = '\0';
 		command[0] = strtok(line, " ");
 		command[0] = checkpath(*head, command[0], lcommand);
-		while ((command[j] = strtok(NULL, "")))
+		printf("%s\n", command[0]);
+		while ((command[j] = strtok(NULL, " ")))
 			j++;
 		child_pid = fork();
 		if (child_pid == -1)
@@ -45,7 +45,7 @@ int p_l(char *line, char **env, list_t **head, char **av)
 				perror(av[0]);
 			return (-1);
 		}
-			wait(&status);
+		wait(&status);
 	}
 	return (0);
 }

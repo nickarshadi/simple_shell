@@ -5,7 +5,7 @@
  */
 void free_list(list_t *head)
 {
-	list_t *node, *node1;
+	list_t *node = NULL, *node1 = NULL;
 
 	if (!head)
 		return;
