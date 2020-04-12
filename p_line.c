@@ -18,7 +18,6 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		buffer[i] =  'a';
 	for (i = 1; i < 4; i++)
 		command[i] = NULL;
-	i = 0;
 	lcommand = &buffer[0];
 	if (!_strcmp(line, "exit\n"))
 		return (-1);
@@ -26,7 +25,7 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		return (0);
 	if (!_strcmp(line, "env\n"))
 	{
-		for (; env[i + 1]; i++)
+		for (i = 0; env[i + 1]; i++)
 			printf("%s\n", env[i]);
 	} else
 	{
