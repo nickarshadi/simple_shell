@@ -12,7 +12,7 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 {
 	struct stat st;
 	const list_t *node = head;
-	int i, len = 1024 * 8;
+	int i, len = 1024 * 8;/* set 8 kebibytes for len*/
 
 	while (node)
 	{
