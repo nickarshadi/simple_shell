@@ -47,6 +47,5 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		}
 		wait(&status);
 	}
-	(void)lcommand;
 	return (0);
 }
