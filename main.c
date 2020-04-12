@@ -18,9 +18,9 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		if (interactive == 1)
-			printed = printf("#cisfun$ ");
+			printed = write(1, "#cisfun$ ", 9);
 		else
-			printed = printf("#cisfun\n");
+			printed = write(1, "#cisfun\n", 9);
 		wait(&printed);
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
