@@ -12,9 +12,8 @@ char *checkpath(const list_t *head, char *command, char *lcommand)
 {
 	struct stat st;
 	const list_t *node = head;
-	int i, len =  0;
+	int i, len = 1024;
 
-	len = _strlen(lcommand);
 	while (node)
 	{
 		for (i = 0; (node->str)[i]; i++)

@@ -10,7 +10,8 @@
  */
 int p_l(char *line, char **env, list_t **head, char **av)
 {
-	char *command[4] = {"", "", "", ""}, buffer[1024], *lcommand = NULL;
+	char *command[4] = {"", "", "", ""};
+	char buffer[1024], *lcommand = NULL;
 	int len = 0, status, i = 0, j = 1;
 	pid_t child_pid = 0;
 
