@@ -12,11 +12,9 @@ int p_l(char *line, char **env, list_t **head, char **av)
 {
 	char *command[4] = {"", "", "", ""};
 	char buffer[1024 * 8], *lcommand = NULL;
-	int len = 0, status, i = 0, j = 1;
+	int len = 0, status, i = 0, j = 1, lene = 1;
 	pid_t child_pid = 0;
 
-	for (; i < 1024; i++)
-		buffer[i] =  'a';
 	for (i = 1; i < 4; i++)
 		command[i] = NULL;
 	lcommand = &buffer[0];
@@ -27,7 +25,11 @@ int p_l(char *line, char **env, list_t **head, char **av)
 	if (!_strcmp(line, "env\n"))
 	{
 		for (i = 0; env[i + 1]; i++)
-			printf("%s\n", env[i]);
+		{
+			lene = _strlen(env[i]);
+			write(1, env[i], lene);
+			_putchar('\n');
+		}
 	} else
 	{
 		len = _strlen(line);
