@@ -10,16 +10,16 @@
  */
 int p_l(char *line, char **env, list_t **head, char **av)
 {
-	char *command[4] = {"", "", "", ""}, buffer[1024];
+	char *command[4] = {"", "", "", ""}, buffer[1024], *lcommand = NULL;
 	int len = 0, status, i = 0, j = 1;
 	pid_t child_pid = 0;
-	char *lcommand = &buffer[0];
 
 	for (; i < 1024; i++)
-		buffer[i] =  '0';
+		buffer[i] =  'a';
 	for (i = 1; i < 4; i++)
 		command[i] = NULL;
 	i = 0;
+	lcommand = &buffer[0];
 	if (!_strcmp(line, "exit\n"))
 		return (-1);
 	if (!_strcmp(line, "\n"))
@@ -47,5 +47,6 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		}
 		wait(&status);
 	}
+	(void)lcommand;
 	return (0);
 }
