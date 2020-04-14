@@ -43,7 +43,7 @@ int p_l(char *line, char **env, list_t **head, char **av)
 			return (-1);
 		else if (child_pid == 0)
 		{
-			if (execve(command[0], command, NULL) == -1)
+			if (execve(command[0], command, env) == -1)
 				perror(av[0]);
 			return (-1);
 		}
