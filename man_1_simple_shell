@@ -16,7 +16,7 @@ The shell is a command that reas lines from either a file or the terminal, inter
 .PP
 If the standard input of the shell is connected to a terminal, the shell is considered an interactive shell. An interactive shell generally prompts before each command and handles programming and command errors differently (as described below). When first starting, the shell inspects argument 0, and if it begins with a dash '-', the shell is also considered a login shell. This is normally done automatically by the system when the user first logs in. A login shell first reads commands from the files /etc/profile and .profile if they exist. If the environment variable ENV is set on entry to an interactive shell, or is set in the .profile of a login shell, the shell next reads commands from the file named in ENV. Therefore, a user should place commands that are to be executed only at login time in the .profile file, and commands that are executed for every interactive shell inside the ENV file. To set the ENV variable to some file, place the following line in your .profile of your home directory
 .PP
-ENV=$HOME/.shinit; export ENV 
+ENV=$HOME/.shinit; export ENV
 .PP
 substituting for ''.shinit'' any filename you wish.
 .PP
@@ -30,7 +30,7 @@ Control operators:
 & && ( ) ; ;; | || <newline>
 .PP
 Redirection operators:
-< > >| << >> <& >& <<- <> 
+< > >| << >> <& >& <<- <>
 .PP
 .B Simple Commands
 .PP
@@ -115,7 +115,7 @@ $HOME/.profile
 .PP
 /etc/profile
 .SH SEE ALSO
-.I csh(1), echo(1), getopt(1), ksh(1), login(1), printf(1), test(1), getopt(3), passwd(5), environ(7), sysctl(8) 
+.I csh(1), echo(1), getopt(1), ksh(1), login(1), printf(1), test(1), getopt(3), passwd(5), environ(7), sysctl(8)
 .SH History
 A
 .B sh
@@ -123,6 +123,6 @@ command appeared in Version 1 AT&T UNIX. It was however, unmaintainable so we wr
 .SH Bugs
 Setuid shell scripts should be avoided at all costs, as they are a significant security risk.
 .PP
-PS1, PS2, and PS4 should be subject to parameter expansion before being displayed. 
+PS1, PS2, and PS4 should be subject to parameter expansion before being displayed.
 .SH AUTHOR
 Nick Arshadi
