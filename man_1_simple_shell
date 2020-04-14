@@ -1,0 +1,128 @@
+.TH hsh 1 "13 April 2020" "0.32" "Linux man page"
+.SH NAME
+.B ./hsh - command interpreter(shell)
+.SH SYNOPSIS
+.B /hsh
+file
+.SH DESCRIPTION
+.B sh
+is the standard command interpreter for the system. This man page is not intended to be a tutorial or a complete specification of the shell.
+.PP
+.B Overview
+.PP
+The shell is a command that reas lines from either a file or the terminal, interprets them, and generally executes other commands. It is the program that is running when a user logs into the system (although a user can select a different shell with the chsh(1) command). The shell implements a language that has flow control constructs, a macro facility that provides a variety of features in addition to data storage, along with built in history and line editing capabilities. It incorporates many features to aid interactive use and has the advantage that the interpretative language is common to both interactive and non-interactive use (shell scripts). That is, commands can be typed directly to the running shell or can be put into a file and the file can be executed directly by the shell.
+.PP
+.B Invocation
+.PP
+If the standard input of the shell is connected to a terminal, the shell is considered an interactive shell. An interactive shell generally prompts before each command and handles programming and command errors differently (as described below). When first starting, the shell inspects argument 0, and if it begins with a dash '-', the shell is also considered a login shell. This is normally done automatically by the system when the user first logs in. A login shell first reads commands from the files /etc/profile and .profile if they exist. If the environment variable ENV is set on entry to an interactive shell, or is set in the .profile of a login shell, the shell next reads commands from the file named in ENV. Therefore, a user should place commands that are to be executed only at login time in the .profile file, and commands that are executed for every interactive shell inside the ENV file. To set the ENV variable to some file, place the following line in your .profile of your home directory
+.PP
+ENV=$HOME/.shinit; export ENV 
+.PP
+substituting for ''.shinit'' any filename you wish.
+.PP
+If command line arguments besides the options have been specified, then the shell treats the first argument as the name of a file from which to read commands (a shell script), and the remaining arguments are set as the positional parameters of the shell ($1, $2, etc). Otherwise, the shell reads commands from its standard input.
+.PP
+.B Lexical Structure
+.PP
+The shell reads input in terms of lines from a file and breaks it up into words at whitespace (blanks and tabs), and certain sequences of characters that are special to the shell called "operators". There are two types of operators: contro operators and redirection operators (their meaning is discussed later) Following is a list of operators:
+.PP
+Control operators:
+& && ( ) ; ;; | || <newline>
+.PP
+Redirection operators:
+< > >| << >> <& >& <<- <> 
+.PP
+.B Simple Commands
+.PP
+If a simple command has been recognized, the shell performs the following actions:
+
+1. Leading words of the form ''name=value'' are stripped off andassigned to the environment of the simple command.Redirection operators and their arguments (as described below)are stripped off and saved for processing.
+
+    2. The remaining words are expanded as described in the section called ''Expansions'', and the first remaining word is considered the command name and the command is located. The remaining words are considered the arguments of the command. If no command name resulted, then the ''name=value'' variable assignments recognized in item 1 affect the current shell.
+
+    3. Redirections are performed as described in the next section.
+
+    Redirections
+    Redirections are used to change where a command reads its input or sends its output. In general, redirections open, close, or duplicate an existing reference to a file. The overall format used for redirection is:
+
+    [n] redir-op file
+
+    where redir-op is one of the redirection operators mentioned previously. Following is a list of the possible redirections. The [n] is an optional number, as in '3' (not '[3]'), that refers to a file descriptor.
+
+    [n]> file
+    Redirect standard output (or n) to file.
+
+    [n]>| file
+    Same, but override the -C option.
+
+    [n]>> file
+    Append standard output (or n) to file.
+
+    [n]< file
+    Redirect standard input (or n) from file.
+
+    [n1]<&n2' Duplicate standard input (or n1) from file descriptor n2.
+
+    [n]<&-' Close standard input (or n).
+
+    [n1]>&n2' Duplicate standard output (or n1) to n2.
+
+    [n]>&-' Close standard output (or n).
+
+    [n]<> file
+    Open file for reading and writing on standard input (or n).
+
+    The following redirection is often called a ''here-document''.
+
+    [n]<< delimiter here-doc-text ... delimiter
+
+    All the text on successive lines up to the delimiter is saved away and made available to the command on standard input, or file descriptor n if it is specified. If the delimiter as specified on the initial line is quoted, then the here-doc-text is treated literally, otherwise the text is subjected to parameter expansion, command substitution, and arithmetic expansion (as described in the section on ''Expansions''). If the operator is ''<<-'' instead of ''<<'', then leading tabs in the here-doc-text are stripped.
+.SH Enironment
+HOME'           Set automatically by login(1) from the user's logindirectory in the password file (passwd(4)).  This environmentvariable also functions as the default argument for the cdbuiltin.
+
+    PATH' The default search path for executables. See the above section Path Search.
+
+    CDPATH' The search path used with the cd builtin.
+
+    MAIL' The name of a mail file, that will be checked for the arrival of new mail. Overridden by MAILPATH.
+
+    MAILCHECK
+    The frequency in seconds that the shell checks for the arrival of mail in the files specified by the MAILPATH or the MAIL file. If set to 0, the check will occur at each prompt.
+
+    MAILPATH
+    A colon '':'' separated list of file names, for the shell to check for incoming mail. This environment setting overrides the MAIL setting. There is a maximum of 10 mailboxes that can be monitored at once.
+
+    PS1' The primary prompt string, which defaults to ''$ '', unless you are the superuser, in which case it defaults to ''# ''.
+
+    PS2' The secondary prompt string, which defaults to ''> ''.
+
+    PS4' Output before each line when execution trace (set -x) is enabled, defaults to ''+ ''.
+
+    IFS' Input Field Separators. This is normally set to <space>, <tab>, and <newline>. See the White Space Splitting section for more details.
+
+    TERM' The default terminal setting for the shell. This is inherited by children of the shell, and is used in the history editing modes.
+
+    HISTSIZE
+    The number of lines in the history buffer for the shell.
+
+    PWD' The logical value of the current working directory. This is set by the cd command.
+
+    OLDPWD' The previous logical value of the current working directory. This is set by the cd command.
+
+    PPID' The process ID of the parent process of the shell.
+.SH Files
+$HOME/.profile
+.PP
+/etc/profile
+.SH SEE ALSO
+.I csh(1), echo(1), getopt(1), ksh(1), login(1), printf(1), test(1), getopt(3), passwd(5), environ(7), sysctl(8) 
+.SH History
+A
+.B sh
+command appeared in Version 1 AT&T UNIX. It was however, unmaintainable so we wrote this one.
+.SH Bugs
+Setuid shell scripts should be avoided at all costs, as they are a significant security risk.
+.PP
+PS1, PS2, and PS4 should be subject to parameter expansion before being displayed. 
+.SH AUTHOR
+Nick Arshadi
