@@ -30,7 +30,7 @@ int main(int ac, char **av, char **env)
 				free(line);
 				line = NULL;
 				free_list(head);
-				return (0);
+				exit(0);
 			}
 		}
 		else if (nread == EOF)
@@ -38,13 +38,13 @@ int main(int ac, char **av, char **env)
 			free_list(head);
 			free(line);
 			_putchar('\n');
-			return (0);
+			exit(0);
 		}
 		free(line);
 		line = NULL;
 		n = 0;
 		if (interactive != 1)
-			return (0);
+		exit(0);
 	}
 	(void)ac;
 }
