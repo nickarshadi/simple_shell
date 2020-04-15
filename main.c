@@ -24,9 +24,7 @@ int main(int ac, char **av, char **env)
 		if (nread != -1)
 		{
 			if (p_l(line, env, &head, av) == -1)
-			{
 				break;
-			}
 		}
 		if (nread == EOF)
 		{
