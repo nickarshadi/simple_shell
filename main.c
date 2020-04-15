@@ -27,7 +27,7 @@ int main(int ac, char **av, char **env)
 			{
 				free(line);
 				line = NULL;
-				goto finish;
+				break;
 			}
 		}
 		free(line);
@@ -36,12 +36,11 @@ int main(int ac, char **av, char **env)
 		if (nread == EOF)
 		{
 			_putchar('\n');
-			goto finish;
+			break;
 		}
 		if (interactive != 1)
-			goto finish;
+			break;
 	}
-finish:
 	free_list(head);
 	exit(0);
 	(void)ac;
