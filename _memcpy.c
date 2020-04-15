@@ -7,7 +7,7 @@
  * _memcpy - Copy n bytes from memory area src to memory area dest
  * @dest: destination
  * @src: source
- * @n: strlen
+ * @n: stringlength
  * Return: a pointer to dest
  */
 char *_memcpy(char *dest, const char *src, unsigned int n)
