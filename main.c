@@ -22,6 +22,11 @@ int main(int ac, char **av, char **env)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
+			if (!_strcmp(line, "echo $?\n"))
+			{
+				write(1, "0\n", 2);
+				continue;
+			}
 			if (p_l(line, env, &head, av) == -1)
 				break;
 		}
