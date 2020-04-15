@@ -42,7 +42,12 @@ int main(int ac, char **av, char **env)
 		line = NULL;
 		n = 0;
 		if (interactive != 1)
-		exit(0);
+		{
+			free(line);
+			line = NULL;
+			free_list(head);
+			exit(0);
+		}
 	}
 	(void)ac;
 }
