@@ -17,7 +17,11 @@ char *_getenv(char *name, char **env)
 		token = strtok(env[i], "=");
 		token1 = strtok(NULL, "=");
 		if (_strcmp(name, token) == 0)
+		{
+			if (token1 == NULL)
+				return (" ");
 			return (token1);
+		}
 		i++;
 	}
 	return (NULL);
