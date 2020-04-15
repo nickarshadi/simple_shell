@@ -41,7 +41,7 @@ int main(int ac, char **av, char **env)
 		if (interactive != 1)
 			goto finish;
 	}
-	finish:
+finish:
 	free_list(head);
 	exit(0);
 	(void)ac;
