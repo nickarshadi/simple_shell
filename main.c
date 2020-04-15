@@ -19,8 +19,6 @@ int main(int ac, char **av, char **env)
 	{
 		if (interactive == 1)
 			printed = write(1, "$ ", 2);
-		else
-			printed = write(1, "$\n", 2);
 		wait(&printed);
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
