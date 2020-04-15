@@ -43,8 +43,6 @@ int main(int ac, char **av, char **env)
 		n = 0;
 		if (interactive != 1)
 		{
-			free(line);
-			line = NULL;
 			free_list(head);
 			exit(0);
 		}
