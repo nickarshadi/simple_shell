@@ -20,8 +20,6 @@ int p_l(char *line, char **env, list_t **head, char **av)
 	lcommand = &buffer[0];
 	if (!_strcmp(line, "exit\n"))
 		return (-1);
-	if (!_strcmp(line, "\n"))
-		return (0);
 	if (!_strcmp(line, "env\n"))
 	{
 		for (i = 0; env[i + 1]; i++)
@@ -35,6 +33,8 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		len = _strlen(line);
 		line[len - 1] = '\0';
 		command[0] = strtok(line, " ");
+		if (command[0] == NULL)
+			return (0);
 		command[0] = checkpath(*head, command[0], lcommand);
 		while ((command[j] = strtok(NULL, " ")))
 			j++;
