@@ -14,6 +14,7 @@ int main(int ac, char **av, char **env)
 	list_t *head = NULL;
 	int interactive = isatty(STDIN_FILENO);
 
+	signal(SIGINT, sighandle);
 	listpath(&head, env);
 	while (1)
 	{

@@ -35,3 +35,14 @@ char *_getenv(char *name, char **env)
 	}
 	return (NULL);
 }
+/**
+ * sighandle - This program allows ctrl+C to be
+ * printed and new line with enter is pressed
+ * @sign: int
+ * Return: void
+ */
+void sighandle(int sign)
+{
+	if (sign == SIGINT)
+		write(STDOUT_FILENO, "\n$ ", 3);
+}

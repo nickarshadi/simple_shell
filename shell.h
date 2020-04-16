@@ -10,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <signal.h>
 
 /**
  * struct list_s - Struct for a singly linked list to save arguments passed to
@@ -38,5 +39,6 @@ char *_strcat(char *dest, char *src);
 char *_strdup(const char *s);
 char *_memcpy(char *dest, const char *src, unsigned int n);
 char *remove_space(char *s);
+void sighandle(int sign);
 
 #endif /* SHELL_H */
