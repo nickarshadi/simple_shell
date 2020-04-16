@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
 	size_t n = 0;
 	ssize_t nread = 0;
 	list_t *head = NULL;
-	int interactive = isatty(STDIN_FILENO);
+	int interactive = isatty(STDIN_FILENO), i = 0;
 
 	signal(SIGINT, sighandle);
 	listpath(&head, env);
@@ -31,11 +31,13 @@ int main(int ac, char **av, char **env)
 			if (p_l(line, env, &head, av) == -1)
 				break;
 		}
-		if (nread == EOF)
+		if (nread == EOF || nread == -2)
 		{
 			if (interactive != 1)
 				break;
 			_putchar('\n');
+			if (nread == -2)
+				i = 2;
 			break;
 		}
 	}
@@ -43,6 +45,6 @@ int main(int ac, char **av, char **env)
 	line = NULL;
 	n = 0;
 	free_list(head);
-	exit(0);
+	exit(i);
 	(void)ac;
 }
