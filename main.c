@@ -30,14 +30,13 @@ int main(int ac, char **av, char **env)
 			if (p_l(line, env, &head, av) == -1)
 				break;
 		}
-		free(line);
-		line = NULL;
-		n = 0;
 		if (nread == EOF)
 		{
 			_putchar('\n');
 			break;
 		}
+		if (interactive != 1)
+			break;
 	}
 	free(line);
 	line = NULL;
