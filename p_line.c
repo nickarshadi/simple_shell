@@ -22,7 +22,7 @@ int p_l(char *line, char **env, list_t **head, char **av)
 		return (-1);
 	if (!_strcmp(line, "env\n"))
 	{
-		for (i = 0; env[i + 1]; i++)
+		for (i = 0; env[i]; i++)
 		{
 			lene = _strlen(env[i]);
 			write(1, env[i], lene);
