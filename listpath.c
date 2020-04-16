@@ -27,5 +27,6 @@ list_t *listpath(list_t **head, char **env)
 	{
 		add_node_end(head, token);
 	}
+	free(path);
 	return (*head);
 }
