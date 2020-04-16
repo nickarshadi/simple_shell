@@ -12,7 +12,7 @@ int main(int ac, char **av, char **env)
 	size_t n = 0;
 	ssize_t nread = 0;
 	list_t *head = NULL;
-	int interactive = isatty(STDIN_FILENO), i = 0;
+	int interactive = isatty(STDIN_FILENO), i = 0, j = 0;
 
 	signal(SIGINT, sighandle);
 	listpath(&head, env);
@@ -23,6 +23,7 @@ int main(int ac, char **av, char **env)
 		nread = getline(&line, &n, stdin);
 		if (nread != -1)
 		{
+			j++;
 			if (!_strcmp(line, "echo $?\n"))
 			{
 				write(1, "0\n", 2);
@@ -37,7 +38,7 @@ int main(int ac, char **av, char **env)
 				break;
 			_putchar('\n');
 			if (nread == -2)
-				i = 2;
+				i = j;
 			break;
 		}
 	}
