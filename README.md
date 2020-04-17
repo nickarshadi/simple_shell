@@ -2,7 +2,9 @@ simple shell
 Description:
 
 What is this repo?
-A Unix shell is a command-line interpreter or shell that provides a command line user interface for Unix-like operating systems. The shell is both an interactive command language and a scripting language, and is used by the operating system to control the execution of the system using shell scripts.
+A Unix shell is a command-line interpreter or shell that provides a command line user interface
+for Unix-like operating systems. The shell is both an interactive command language and a scripting language
+and is used by the operating system to control the execution of the system using shell scripts.
 How does it work?
 This shell works by entering an infinite loop which is only exited under certain conditions.
 Who will use this repo?
