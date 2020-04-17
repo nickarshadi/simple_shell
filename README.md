@@ -8,6 +8,14 @@ This shell works by entering an infinite loop which is only exited under certain
 Who will use this repo?
 This repo mainly is created as a Holberton-school project and will mainly be used by my peers.
 
+Release History
+    • 0.0.1 - First release - 7 Apr 2020 
+        ◦ More features in progress 
+About
+
+All files were created and compiled on Ubuntu 14.04.4 LTS using
+GCC 4.8.4 with the following flags: -Wall -Werror -Wextra -pedantic
+
 Instructions:
 
 To make use of this project first clone it to your local system with the command 
@@ -34,15 +42,16 @@ Example Usage
     • echo "ls" | ./hsh
     • echo "ls -la /home" | ./hsh
     • echo "/bin/ls\npwd\exit" | ./hsh
-Release History
-    • 0.0.1 - First release - 7 Apr 2020 
-        ◦ More features in progress 
-About
 
-All files were created and compiled on Ubuntu 14.04.4 LTS using
-GCC 4.8.4 with the following flags: -Wall -Werror -Wextra -pedantic
+How you can help:
+We explicitly welcome outside contributors. It is pretty simple just send me 
+your pull-request and I will approve it if it does benefit this shell.
+
+License:
+
+This project does not have a licence.
 
 Authors:
 
-Nick Arshadi
-Jorge Ramirez
+Nick Arshadi <arshadi.nick@gmail.com>
+Jorge Ramirez <jorge.ramirez@gmail.com>
